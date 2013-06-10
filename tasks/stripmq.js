@@ -5,6 +5,9 @@ var fs = require("fs"),
 
 module.exports = function(grunt) {
     grunt.registerMultiTask("stripmq", "Strip media queries from stylesheets", function () {
+        var options = this.options({
+          width :   0
+        });
 
         // Iterate over all src-dest file pairs.
         this.files.forEach(function(f) {
@@ -23,7 +26,7 @@ module.exports = function(grunt) {
             var result;
             try {
                 var input = fs.readFileSync(src[0], {encoding:'utf-8'});
-                result = stripmq(input);
+                result = stripmq(input, options);
             } catch (e) {
                 var err = new Error('Stripping media queries failed.');
                 if (e.msg) {

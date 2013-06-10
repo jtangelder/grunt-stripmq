@@ -4,6 +4,10 @@ body { background: url('mobile-background.png'); }
     body { background: url('tablet-background.png'); }
 }
 
+@media screen and (max-width: 800px) {
+    body { background: url('until-800px-background.png'); }
+}
+
 @media screen and (min-width: 900px) {
     body { background: url('desktop-background.png'); }
 }

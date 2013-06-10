@@ -1,4 +1,5 @@
-# Mobile-first CSS fallback
+# grunt-stripmq
+> Mobile-first CSS fallback
 
 A Grunt task to generate a fallback version of your fancy mobile first stylesheet.
 Since <IE9 doesnt support media queries, you can use a javascript like respond.js to enable this,

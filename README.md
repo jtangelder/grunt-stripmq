@@ -7,6 +7,13 @@ or generate a fallback version with this task.
 It strips out all the media queries and creates overwrites, and also removes all the device pixel queries with it's contents.
 With the `width` option, you can remove `max-width` queries, since they wont be in the desktop version.
 
+In your HTML you can use conditional comments to load the desktop.css for old IEs.
+
+````html
+<!--[if lt IE 9]><link rel="stylesheet" href="desktop.css"><![endif]-->
+<!--[if !IE]> --><link rel="stylesheet" href="mobile-first.css"><!-- <![endif]-->
+````
+
 ### Sample
 ````css
 body { background: url('mobile-background.png'); }

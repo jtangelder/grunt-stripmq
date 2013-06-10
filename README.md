@@ -43,6 +43,17 @@ body {
 }
 ````
 
+### Grunt task
+````js
+    stripmq: {
+        all: {
+            files: {
+                'desktop.css': ['mobile-first.css']
+            }
+        }
+    }
+````
+
 
 ### Todo
 - Add a viewport width option, to remove the contents of max-width queries

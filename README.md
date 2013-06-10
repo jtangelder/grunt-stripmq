@@ -5,7 +5,7 @@ Since <IE9 doesnt support media queries, you can use a javascript like respond.j
 or generate a fallback version with this task.
 
 It strips out all the media queries and creates overwrites, and also removes all the device pixel queries with it's contents.
-
+With the `width` option, you can remove `max-width` queries, since they wont be in the desktop version.
 
 ### Sample
 ````css
@@ -46,6 +46,9 @@ body {
 ### Grunt task
 ````js
     stripmq: {
+        options: {
+            width: 980
+        }
         all: {
             files: {
                 'desktop.css': ['mobile-first.css']
@@ -56,5 +59,4 @@ body {
 
 
 ### Todo
-- Add a viewport width option, to remove the contents of max-width queries
 - Remove overwritten properties

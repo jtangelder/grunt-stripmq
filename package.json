@@ -1,0 +1,15 @@
+{
+    "name": "css-remove-mq",
+    "description": "CSS remove MQ",
+    "keywords": ["css", "parser", "stylesheet"],
+    "author": "J. Tangelder <jorik@eight.nl>",
+    "dependencies": {
+        "grunt": "*",
+        "css-stringify": "1.3.*",
+        "css-parse": "1.4.*"
+    },
+    "devDependencies": {
+        "grunt-contrib-jshint": "*"
+    },
+    "main": "index"
+}

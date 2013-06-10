@@ -15,7 +15,7 @@ In your HTML you can use conditional comments to load the desktop.css for old IE
 
 ````html
 <!--[if lt IE 9]><link rel="stylesheet" href="desktop.css"><![endif]-->
-<!--[if !IE]> --><link rel="stylesheet" href="mobile-first.css"><!-- <![endif]-->
+<!--[if gt IE 8]><!--> <link rel="stylesheet" href="mobile-first.css"><!--<![endif]-->
 ````
 
 ## Sample

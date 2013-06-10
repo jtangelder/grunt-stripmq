@@ -1,6 +1,9 @@
 # grunt-stripmq
 > Mobile-first CSS fallback
 
+## Getting Started
+This plugin requires Grunt `~0.4.0`
+
 A Grunt task to generate a fallback version of your fancy mobile first stylesheet.
 Since <IE9 doesnt support media queries, you can use a javascript like respond.js to enable this,
 or generate a fallback version with this task.
@@ -15,7 +18,7 @@ In your HTML you can use conditional comments to load the desktop.css for old IE
 <!--[if !IE]> --><link rel="stylesheet" href="mobile-first.css"><!-- <![endif]-->
 ````
 
-### Sample
+## Sample
 ````css
 body { background: url('mobile-background.png'); }
 
@@ -55,7 +58,7 @@ body {
 }
 ````
 
-### Grunt task
+## Grunt task
 ````js
     stripmq: {
         options: {
@@ -70,5 +73,5 @@ body {
 ````
 
 
-### Todo
+## Todo
 - Remove overwritten properties

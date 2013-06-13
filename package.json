@@ -6,8 +6,8 @@
     "repository": "git://github.com/jtangelder/grunt-stripmq.git",
     "dependencies": {
         "grunt": "*",
-        "css-stringify": "1.3.*",
-        "css-parse": "1.4.*"
+        "css-stringify": "*",
+        "css-parse": "*"
     },
     "devDependencies": {
         "grunt-contrib-jshint": "*"

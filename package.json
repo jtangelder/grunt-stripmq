@@ -1,8 +1,9 @@
 {
-    "name": "css-remove-mq",
+    "name": "grunt-stripmq",
     "description": "CSS remove MQ",
     "keywords": ["css", "parser", "stylesheet"],
     "author": "J. Tangelder <jorik@eight.nl>",
+    "repository": "git://github.com/jtangelder/grunt-stripmq.git",
     "dependencies": {
         "grunt": "*",
         "css-stringify": "1.3.*",

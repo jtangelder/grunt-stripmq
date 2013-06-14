@@ -6,7 +6,16 @@ body {
   background: url('tablet-background.png');
 }
 
+
+
 body {
   background: url('desktop-background.png');
 }
 
+body {
+  background: url('large-background.png');
+}
+
+body {
+  background: url('hd-background.png');
+}

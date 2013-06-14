@@ -2,25 +2,75 @@
 
 var fs = require('fs'),
     Parser = require('css-parse'),
-    Stringify = require('css-stringify/lib/identity');
+    Stringify = require('css-stringify/lib/compress');
 
 
 // overwrite media compiler method
 Stringify.prototype.media = function(node) {
-    // remove DPR!
-    if(node.media.match(/device-pixel-ratio/i)) {
-        return '';
-    }
-
-    var max_width = node.media.match(/max-width:\s*([0-9]+)/i);
-    if(this.viewport_width && max_width && parseInt(max_width[1],10) < this.viewport_width) {
+    if(!this.matchMedia(node.media)) {
         return '';
     }
 
     return node.rules.map(this.visit, this).join('');
 };
 
-Stringify.prototype.viewport_width = 0;
+
+/**
+ * parse media queries
+ * @param str
+ * @returns {boolean}
+ */
+Stringify.prototype.matchMedia = function(str) {
+    var queries = str.toLowerCase()
+        .match(/(max-width|min-width|max-height|min-height|min-device-pixel-ratio|max-device-pixel-ratio):\s*([0-9\.]+)/gi),
+
+        v = this.viewport,
+        matches = [];
+
+    queries.forEach(function(query) {
+        var property = query.split(":")[0].trim(),
+            value = parseFloat(query.split(":")[1]);
+
+        switch(property) {
+            case 'max-width':
+                matches.push(v.width < value);
+                break;
+
+            case 'min-width':
+                matches.push(v.width > value);
+                break;
+
+            case 'max-height':
+                matches.push(v.height < value);
+                break;
+
+            case 'min-height':
+                matches.push(v.height > value);
+                break;
+
+            case 'min-device-pixel-ratio':
+                matches.push(v.pixelRatio > value);
+                break;
+
+            case 'max-device-pixel-ratio':
+                matches.push(v.pixelRatio < value);
+                break;
+        }
+    });
+
+    return matches.indexOf(false) === -1;
+};
+
+
+/**
+ * virtual viewport
+ * @type {{pixelRatio: number, width: number, height: number}}
+ */
+Stringify.prototype.viewport = {
+    pixelRatio: 1,
+    width: 1000,
+    height: 768
+};
 
 
 /**
@@ -28,7 +78,7 @@ Stringify.prototype.viewport_width = 0;
  * @param   {string} input
  * @returns {string} output
  */
-module.exports = function(input, options) {
+function StripMQ(input, options) {
     var tree = new Parser(input);
     var compiler = new Stringify({});
 
@@ -37,4 +87,6 @@ module.exports = function(input, options) {
     }
 
     return compiler.compile(tree);
-};
+}
+
+module.exports = StripMQ;

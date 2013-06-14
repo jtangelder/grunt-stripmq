@@ -5,9 +5,7 @@ var fs = require("fs"),
 
 module.exports = function(grunt) {
     grunt.registerMultiTask("stripmq", "Strip media queries from stylesheets", function () {
-        var options = this.options({
-          width :   0
-        });
+        var options = this.options({});
 
         // Iterate over all src-dest file pairs.
         this.files.forEach(function(f) {

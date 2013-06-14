@@ -22,40 +22,20 @@ Stringify.prototype.media = function(node) {
  * @returns {boolean}
  */
 Stringify.prototype.matchMedia = function(str) {
-    var queries = str.toLowerCase()
-        .match(/(max-width|min-width|max-height|min-height|min-device-pixel-ratio|max-device-pixel-ratio):\s*([0-9\.]+)/gi),
-
+    var queries = str.toLowerCase().match(/(max|min)-(width|height|device-pixel-ratio):\s*([0-9\.]+)/gi),
         v = this.viewport,
         matches = [];
 
     queries.forEach(function(query) {
-        var property = query.split(":")[0].trim(),
+        // min/max is should be the first property, then the name of the property (like width)
+        var property = query.split(":")[0].trim().match(/^(min|max)-(.+)$/),
+            // parse the value of the property
             value = parseFloat(query.split(":")[1]);
 
-        switch(property) {
-            case 'max-width':
-                matches.push(v.width < value);
-                break;
-
-            case 'min-width':
-                matches.push(v.width > value);
-                break;
-
-            case 'max-height':
-                matches.push(v.height < value);
-                break;
-
-            case 'min-height':
-                matches.push(v.height > value);
-                break;
-
-            case 'max-device-pixel-ratio':
-                matches.push(v.dpr < value);
-                break;
-
-            case 'min-device-pixel-ratio':
-                matches.push(v.dpr > value);
-                break;
+        if(property[1] === 'min') {
+            matches.push(v[property[2]] >= value);
+        } else if(property[1] === 'max') { {
+            matches.push(v[property[2]] <= value);
         }
     });
 
@@ -65,12 +45,12 @@ Stringify.prototype.matchMedia = function(str) {
 
 /**
  * virtual viewport
- * @type {{pixelRatio: number, width: number, height: number}}
+ * @type {{device-pixel-ratio: number, width: number, height: number}}
  */
 Stringify.prototype.viewport = {
-    dpr: 1,
-    width: 1024,
-    height: 768
+    "device-pixel-ratio": 1,
+    "width": 1024,
+    "height": 768
 };
 
 

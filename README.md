@@ -8,8 +8,8 @@ A Grunt task to generate a fallback version of your fancy mobile first styleshee
 Since <IE9 doesnt support media queries, you can use a javascript like respond.js to enable this,
 or generate a fallback version with this task.
 
-It strips out all the media queries and creates overwrites, and also removes all the device pixel queries with it's contents.
-With the `width` option, you can remove `max-width` queries, since they wont be in the desktop version.
+It parses your media queries, removes the unreachable for the given viewport, and adds the query contents
+to the stylesheet. It is important to keep the flow in your document from small to high, like in the example css below.
 
 In your HTML you can use conditional comments to load the desktop.css for old IEs.
 
@@ -62,7 +62,9 @@ body {
 ````js
     stripmq: {
         options: {
-            width: 980
+            width: 640,     // viewport width, default is 1024
+            height: 480,    // viewport height, default is 768
+            dpr: 2          // for device-pixel-ratio, default is 1
         }
         all: {
             files: {

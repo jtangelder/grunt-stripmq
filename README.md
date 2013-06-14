@@ -36,7 +36,6 @@ body { background: url('mobile-background.png'); }
 
 @media (-webkit-min-device-pixel-ratio: 1.5),
     (min--moz-device-pixel-ratio: 1.5),
-    (-o-min-device-pixel-ratio: 3 / 2),
     (min-device-pixel-ratio: 1.5) {
     body { background: url('hd-background.png'); }
 }

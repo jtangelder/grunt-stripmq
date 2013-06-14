@@ -34,7 +34,7 @@ Stringify.prototype.matchMedia = function(str) {
 
         if(property[1] === 'min') {
             matches.push(v[property[2]] >= value);
-        } else if(property[1] === 'max') { {
+        } else if(property[1] === 'max') {
             matches.push(v[property[2]] <= value);
         }
     });
@@ -48,7 +48,7 @@ Stringify.prototype.matchMedia = function(str) {
  * @type {{device-pixel-ratio: number, width: number, height: number}}
  */
 Stringify.prototype.viewport = {
-    "device-pixel-ratio": 1,
+    "device-pixel-ratio": 2,
     "width": 1024,
     "height": 768
 };

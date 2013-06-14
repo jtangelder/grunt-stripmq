@@ -1,6 +1,7 @@
 'use strict';
 
 var fs = require('fs'),
+    _ = require('underscore'),
     Parser = require('css-parse'),
     Stringify = require('css-stringify/lib/compress');
 
@@ -48,12 +49,12 @@ Stringify.prototype.matchMedia = function(str) {
                 matches.push(v.height > value);
                 break;
 
-            case 'min-device-pixel-ratio':
-                matches.push(v.pixelRatio > value);
+            case 'max-device-pixel-ratio':
+                matches.push(v.dpr < value);
                 break;
 
-            case 'max-device-pixel-ratio':
-                matches.push(v.pixelRatio < value);
+            case 'min-device-pixel-ratio':
+                matches.push(v.dpr > value);
                 break;
         }
     });
@@ -67,8 +68,8 @@ Stringify.prototype.matchMedia = function(str) {
  * @type {{pixelRatio: number, width: number, height: number}}
  */
 Stringify.prototype.viewport = {
-    pixelRatio: 1,
-    width: 1000,
+    dpr: 1,
+    width: 1024,
     height: 768
 };
 
@@ -83,7 +84,7 @@ function StripMQ(input, options) {
     var compiler = new Stringify({});
 
     if(options) {
-        compiler.viewport_width = options.width || 0;
+        _.extend(compiler.viewport, options);
     }
 
     return compiler.compile(tree);

@@ -6,6 +6,7 @@
     "repository": "git://github.com/jtangelder/grunt-stripmq.git",
     "dependencies": {
         "grunt": "*",
+        "underscore": "*",
         "css-stringify": "*",
         "css-parse": "*"
     },

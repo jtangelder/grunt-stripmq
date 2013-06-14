@@ -15,9 +15,6 @@ module.exports = function (grunt) {
 
         // Configuration to be run (and then tested).
         stripmq: {
-            options: {
-                width: 980
-            },
             all: {
                 files: {
                     'test/output.css': ['test/input.css']

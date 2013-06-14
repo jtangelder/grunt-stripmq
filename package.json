@@ -7,7 +7,7 @@
         "type": "MIT",        
         "url": "https://github.com/jtangelder/grunt-stripmq/blob/master/LICENSE"
     }],
-    "keywords": ["grunt","mediaquery","mobile","css"],
+    "keywords": ["gruntplugin","mediaquery","mobile","css"],
     "author": {
         "name": "Jorik Tangelder",
         "email": "j.tangelder@gmail.com"

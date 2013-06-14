@@ -1,9 +1,23 @@
 {
     "name": "grunt-stripmq",
-    "description": "CSS remove MQ",
-    "keywords": ["css", "parser", "stylesheet"],
-    "author": "J. Tangelder <jorik@eight.nl>",
-    "repository": "git://github.com/jtangelder/grunt-stripmq.git",
+    "title": "grunt-stripmq",
+    "description": "Create a desktop version of your mobile-first CSS",
+    "version": "0.0.1",
+    "licenses": [{
+        "type": "MIT"
+    }],
+    "keywords": ["grunt","mediaquery","mobile","css"],
+    "author": {
+        "name": "Jorik Tangelder",
+        "email": "j.tangelder@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/jtangelder/grunt-stripmq.git"
+    },
+    "bugs": {
+        "url": "https://github.com/jtangelder/grunt-stripmq/issues"
+    },
     "dependencies": {
         "grunt": "*",
         "underscore": "*",

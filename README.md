@@ -63,7 +63,7 @@ body {
         options: {
             width: 640,     // viewport width, default is 1024
             height: 480,    // viewport height, default is 768
-            dpr: 2          // for device-pixel-ratio, default is 1
+            'device-pixel-ratio': 2          // default is 1
         }
         all: {
             files: {

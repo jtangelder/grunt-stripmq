@@ -18,7 +18,7 @@ In your HTML you can use conditional comments to load the desktop.css for old IE
 <!--[if gt IE 8]><!--><link rel="stylesheet" href="mobile-first.css"><!--<![endif]-->
 ````
 
-## Sample
+## Sample with default settings
 ````css
 body { background: url('mobile-background.png'); }
 
@@ -34,8 +34,13 @@ body { background: url('mobile-background.png'); }
     body { background: url('desktop-background.png'); }
 }
 
+@media screen and (min-width: 1200px) {
+    body { background: url('large-background.png'); }
+}
+
 @media (-webkit-min-device-pixel-ratio: 1.5),
     (min--moz-device-pixel-ratio: 1.5),
+    (-o-min-device-pixel-ratio: 3 / 2),
     (min-device-pixel-ratio: 1.5) {
     body { background: url('hd-background.png'); }
 }
@@ -44,17 +49,9 @@ body { background: url('mobile-background.png'); }
 becomes
 
 ````css
-body {
-  background: url('mobile-background.png');
-}
-
-body {
-  background: url('tablet-background.png');
-}
-
-body {
-  background: url('desktop-background.png');
-}
+body{background:url('mobile-background.png');}
+body{background:url('tablet-background.png');}
+body{background:url('desktop-background.png');}
 ````
 
 ## Grunt task

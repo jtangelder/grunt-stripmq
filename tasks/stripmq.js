@@ -22,9 +22,9 @@ module.exports = function(grunt) {
 
             // Minify files, warn and fail on error.
             var result;
-            try {
                 var input = fs.readFileSync(src[0], {encoding:'utf-8'});
                 result = stripmq(input, options);
+            try {
             } catch (e) {
                 var err = new Error('Stripping media queries failed.');
                 if (e.msg) {

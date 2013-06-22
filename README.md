@@ -5,7 +5,7 @@
 This plugin requires Grunt `~0.4.0`, and is available on [npmjs.org](https://npmjs.org/package/grunt-stripmq)
 
 A Grunt task to generate a fallback version of your fancy mobile first stylesheet.
-Since <IE9 doesnt support media queries, you can use a javascript like respond.js to enable this,
+Since IE8 and lower dont support media queries, you can use a javascript like respond.js to enable this,
 or generate a fallback version with this task.
 
 It parses your media queries, removes the unreachable for the given viewport, and adds the query contents

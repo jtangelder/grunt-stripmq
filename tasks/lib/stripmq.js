@@ -26,6 +26,9 @@ Stringify.prototype.matchMedia = function(str) {
         queries = str.toLowerCase().match(/\((.+)\)/gi),
         matches = [];
 
+    if(!queries)
+        return;
+
     queries.forEach(function(query) {
         // min/max is should be the first property, then the name of the property (like width)
         var keyval = query.replace(/\(|\)/g, "").split(":"),

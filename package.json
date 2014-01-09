@@ -1,32 +1,40 @@
 {
-    "name": "grunt-stripmq",
-    "title": "grunt-stripmq",
-    "description": "Create a desktop version of your mobile-first CSS",
-    "version": "0.0.2",
-    "licenses": [{
-        "type": "MIT",        
-        "url": "https://github.com/jtangelder/grunt-stripmq/blob/master/LICENSE"
-    }],
-    "keywords": ["gruntplugin","mediaquery","mobile","css"],
-    "author": {
-        "name": "Jorik Tangelder",
-        "email": "j.tangelder@gmail.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/jtangelder/grunt-stripmq.git"
-    },
-    "bugs": {
-        "url": "https://github.com/jtangelder/grunt-stripmq/issues"
-    },
-    "dependencies": {
-        "grunt": "0.4",
-        "underscore": "*",
-        "css-stringify": "*",
-        "css-parse": "*"
-    },
-    "devDependencies": {
-        "grunt-contrib-jshint": "*"
-    },
-    "main": "index"
+  "name": "grunt-stripmq",
+  "title": "grunt-stripmq",
+  "description": "Create a desktop version of your mobile-first CSS",
+  "version": "0.0.2",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jtangelder/grunt-stripmq/blob/master/LICENSE"
+    }
+  ],
+  "keywords": [
+    "gruntplugin",
+    "mediaquery",
+    "mobile",
+    "css"
+  ],
+  "author": {
+    "name": "Jorik Tangelder",
+    "email": "j.tangelder@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jtangelder/grunt-stripmq.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jtangelder/grunt-stripmq/issues"
+  },
+  "dependencies": {
+    "grunt": "0.4",
+    "underscore": "*",
+    "css-stringify": "*",
+    "css-parse": "*",
+    "css-mediaquery": "~0.1.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "*"
+  },
+  "main": "index"
 }

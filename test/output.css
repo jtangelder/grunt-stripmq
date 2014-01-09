@@ -1,1 +1,11 @@
-body{background:url('mobile-background.png');}body{background:url('tablet-background.png');}body{background:url('desktop-background.png');}
+body {
+  background: url('mobile-background.png');
+}
+
+body {
+  background: url('tablet-background.png');
+}
+
+body {
+  background: url('desktop-background.png');
+}

@@ -40,8 +40,8 @@ body { background: url('mobile-background.png'); }
 
 @media (-webkit-min-device-pixel-ratio: 1.5),
     (min--moz-device-pixel-ratio: 1.5),
-    (-o-min-device-pixel-ratio: 3 / 2),
-    (min-device-pixel-ratio: 1.5) {
+    (min-device-pixel-ratio: 1.5),
+    (min-resolution: 2dppx) {
     body { background: url('hd-background.png'); }
 }
 ````
@@ -49,10 +49,27 @@ body { background: url('mobile-background.png'); }
 becomes
 
 ````css
-body{background:url('mobile-background.png');}
-body{background:url('tablet-background.png');}
-body{background:url('desktop-background.png');}
+body {
+  background: url('mobile-background.png');
+}
+
+body {
+  background: url('tablet-background.png');
+}
+
+body {
+  background: url('desktop-background.png');
+}
 ````
+
+### Note
+Opera Device Pixel ratio is not supported by css-mediaquery 0.1.2
+````css
+@media (-o-min-device-pixel-ratio: 3 / 2) {
+    body { background: url('hd-background.png'); }
+}
+````
+
 
 ## Grunt task
 ````js
@@ -60,8 +77,8 @@ body{background:url('desktop-background.png');}
         options: {
             width: 640,     // viewport width, default is 1024
             height: 480,    // viewport height, default is 768
-            'device-pixel-ratio': 2          // default is 1
-        }
+            resolution: '2dppx'          // default is 1dppx
+        },
         all: {
             files: {
                 'desktop.css': ['mobile-first.css']
@@ -69,7 +86,25 @@ body{background:url('desktop-background.png');}
         }
     }
 ````
+becomes
 
+````css
+body {
+  background: url('mobile-background.png');
+}
+
+body {
+  background: url('tablet-background.png');
+}
+
+body {
+  background: url('until-800px-background.png');
+}
+
+body {
+  background: url('hd-background.png');
+}
+````
 
 ## Todo
 - Remove overwritten properties

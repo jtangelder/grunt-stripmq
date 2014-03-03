@@ -2,30 +2,22 @@ body {
     background: url('mobile-background.png');
 }
 
+/* Change the background for tablets */
 @media screen and (min-width: 640px) {
     body {
         background: url('tablet-background.png');
     }
 }
 
-@media screen and (max-width: 800px) {
-    body {
-        background: url('until-800px-background.png');
-    }
-}
-
+/* Change the background again for desktop and increase the font-size */
 @media (min-width: 900px) {
     body {
         background: url('desktop-background.png');
+        font-size: 120%;
     }
 }
 
-@media screen and (min-width: 1200px) {
-    body {
-        background: url('large-background.png');
-    }
-}
-
+/* If it's a monochrome screen, show a black background */
 @media (monochrome) {
     body {
         background: black;

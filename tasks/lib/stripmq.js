@@ -13,7 +13,9 @@ function stripMediaQueries (ast, options) {
             }
         }
         else {
-            rules.push(rule);
+            if(options.ignoreBase !== true){
+                rules.push(rule);
+            }
         }
         return rules;
     }, []);
@@ -36,7 +38,8 @@ function StripMQ(input, options) {
         resolution:      options.resolution || '1dppx',
         orientation:     options.orientation || 'landscape',
         'aspect-ratio':  options['aspect-ratio'] || options.width/options.height || 1024/768,
-        color:           options.color || 3
+        color:           options.color || 3,
+        ignoreBase:      options.ignoreBase || false
     };
 
     var tree = parse(input);

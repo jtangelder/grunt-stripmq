@@ -4,12 +4,12 @@ var parse = require('css-parse'),
     stringify = require('css-stringify'),
     mediaQuery = require('css-mediaquery');
 
-function prefixSelectors(prefix, selectors){
-    selectors.forEach(function(val, idx, arr){
-        arr[idx] = prefix + val;
+function prefixSelectors(options, rules){
+    rules.forEach(function(rule){
+        rule.selectors.forEach(function(selector, index){
+            rule.selectors[index] = options.prefixCSS + (options.prefixWithSpace !== false ? ' ' : '') + selector;
+        });
     });
-
-    return selectors;
 }
 
 
@@ -17,18 +17,14 @@ function stripMediaQueries(ast, options) {
     ast.stylesheet.rules = ast.stylesheet.rules.reduce(function(rules, rule) {
         if (rule.type === 'media') {
             if (mediaQuery.match(rule.media, options)) {
-                if (options.prefixCSS.length > 0){
-                    rule.selectors = prefixSelectors(options.prefixCSS + (options.prefixWithSpace ? " " : ""), rule.selectors);
+                if(options.prefixCSS.length > 0){
+                    prefixSelectors(options,rule);
                 }
 
                 rules.push.apply(rules, rule.rules);
             }
         } else {
             if (options.ignoreBase !== true) {
-                if (options.prefixCSS.length > 0){
-                    rule.selectors = prefixSelectors(options.prefixCSS + (options.prefixWithSpace ? " " : ""), rule.selectors);
-                }
-
                 rules.push(rule);
             }
         }
@@ -54,9 +50,9 @@ function StripMQ(input, options) {
         orientation:     options.orientation || 'landscape',
         'aspect-ratio':  options['aspect-ratio'] || options.width / options.height || 1024 / 768,
         color:           options.color || 3,
-        ignoreBase:      options.ignoreBase === true,
+        ignoreBase:      (options.ignoreBase === true),
         prefixCSS:       options.prefixCSS || '',
-        prefixWithSpace: options.prefixWithSpace !== false
+        prefixWithSpace: (options.prefixWithSpace !== false)
     };
 
     var tree = parse(input);

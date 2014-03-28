@@ -1,6 +1,8 @@
 # grunt-stripmq
 > Mobile-first CSS Fallback
 
+Fork of [jtangelder](https://github.com/jtangelder/grunt-stripmq), adding a switch to ignore base CSS.
+
 **grunt-stripmq** is a Grunt task to generate a fallback version of your fancy mobile first stylesheet. Since IE8 and lower dont support media queries, you can use a javascript library like respond.js to enable this, or generate a fallback version on build-time with this task.
 
 Here's the workflow:
@@ -165,6 +167,18 @@ Default value: Defaults to `options.width/options.height` if both are provided, 
 #### options['color']
 Type: `Integer`
 Default value: `3`
+
+#### options.ignoreBase
+Type: `Boolean`
+Default value: `false`
+
+#### options.prefixCSS
+Type: `String`
+Default value: `""`
+
+#### options.prefixWithSpace
+Type: `Boolean`
+Default value: `true
 
 ## Contributing
 

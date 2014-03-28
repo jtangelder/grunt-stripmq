@@ -4,16 +4,31 @@ var parse = require('css-parse'),
     stringify = require('css-stringify'),
     mediaQuery = require('css-mediaquery');
 
+function prefixSelectors(prefix, selectors){
+    selectors.forEach(function(val, idx, arr){
+        arr[idx] = prefix + val;
+    });
 
-function stripMediaQueries (ast, options) {
-   ast.stylesheet.rules = ast.stylesheet.rules.reduce(function (rules, rule) {
+    return selectors;
+}
+
+
+function stripMediaQueries(ast, options) {
+    ast.stylesheet.rules = ast.stylesheet.rules.reduce(function(rules, rule) {
         if (rule.type === 'media') {
             if (mediaQuery.match(rule.media, options)) {
+                if (options.prefixCSS.length > 0){
+                    rule.selectors = prefixSelectors(options.prefixCSS + (options.prefixWithSpace ? " " : ""), rule.selectors);
+                }
+
                 rules.push.apply(rules, rule.rules);
             }
-        }
-        else {
-            if(options.ignoreBase !== true){
+        } else {
+            if (options.ignoreBase !== true) {
+                if (options.prefixCSS.length > 0){
+                    rule.selectors = prefixSelectors(options.prefixCSS + (options.prefixWithSpace ? " " : ""), rule.selectors);
+                }
+
                 rules.push(rule);
             }
         }
@@ -37,9 +52,11 @@ function StripMQ(input, options) {
         'device-height': options['device-height'] || options.height || 768,
         resolution:      options.resolution || '1dppx',
         orientation:     options.orientation || 'landscape',
-        'aspect-ratio':  options['aspect-ratio'] || options.width/options.height || 1024/768,
+        'aspect-ratio':  options['aspect-ratio'] || options.width / options.height || 1024 / 768,
         color:           options.color || 3,
-        ignoreBase:      options.ignoreBase || false
+        ignoreBase:      options.ignoreBase === true,
+        prefixCSS:       options.prefixCSS || '',
+        prefixWithSpace: options.prefixWithSpace !== false
     };
 
     var tree = parse(input);

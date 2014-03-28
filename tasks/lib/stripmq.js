@@ -4,7 +4,7 @@ var parse = require('css-parse'),
     stringify = require('css-stringify'),
     mediaQuery = require('css-mediaquery');
 
-function prefixSelectors(options, rules){
+function prefixSelectors (options, rules){
     rules.forEach(function(rule){
         rule.selectors.forEach(function(selector, index){
             rule.selectors[index] = options.prefixCSS + (options.prefixWithSpace !== false ? ' ' : '') + selector;
@@ -13,7 +13,7 @@ function prefixSelectors(options, rules){
 }
 
 
-function stripMediaQueries(ast, options) {
+function stripMediaQueries (ast, options) {
     ast.stylesheet.rules = ast.stylesheet.rules.reduce(function(rules, rule) {
         if (rule.type === 'media') {
             if (mediaQuery.match(rule.media, options)) {
@@ -38,7 +38,7 @@ function stripMediaQueries(ast, options) {
  * @param   {string} input
  * @returns {string} output
  */
-function StripMQ(input, options) {
+function StripMQ (input, options) {
 
     options = {
         type:            options.type || 'screen',
@@ -48,7 +48,7 @@ function StripMQ(input, options) {
         'device-height': options['device-height'] || options.height || 768,
         resolution:      options.resolution || '1dppx',
         orientation:     options.orientation || 'landscape',
-        'aspect-ratio':  options['aspect-ratio'] || options.width / options.height || 1024 / 768,
+        'aspect-ratio':  options['aspect-ratio'] || options.width/options.height || 1024/768,
         color:           options.color || 3,
         ignoreBase:      (options.ignoreBase === true),
         prefixCSS:       options.prefixCSS || '',

@@ -166,17 +166,9 @@ Default value: Defaults to `options.width/options.height` if both are provided, 
 Type: `Integer`
 Default value: `3`
 
-#### options.ignoreBase
+#### options.removeBaseCss
 Type: `Boolean`
 Default value: `false`
-
-#### options.prefixCSS
-Type: `String`
-Default value: `""`
-
-#### options.prefixWithSpace
-Type: `Boolean`
-Default value: `true
 
 ## Contributing
 

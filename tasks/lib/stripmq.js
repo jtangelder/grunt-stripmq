@@ -4,27 +4,14 @@ var parse = require('css-parse'),
     stringify = require('css-stringify'),
     mediaQuery = require('css-mediaquery');
 
-function prefixSelectors (options, rules){
-    rules.forEach(function(rule){
-        rule.selectors.forEach(function(selector, index){
-            rule.selectors[index] = options.prefixCSS + (options.prefixWithSpace !== false ? ' ' : '') + selector;
-        });
-    });
-}
-
-
 function stripMediaQueries (ast, options) {
     ast.stylesheet.rules = ast.stylesheet.rules.reduce(function(rules, rule) {
         if (rule.type === 'media') {
             if (mediaQuery.match(rule.media, options)) {
-                if(options.prefixCSS.length > 0){
-                    prefixSelectors(options,rule);
-                }
-
                 rules.push.apply(rules, rule.rules);
             }
         } else {
-            if (options.ignoreBase !== true) {
+            if (options.removeBaseCss !== true) {
                 rules.push(rule);
             }
         }
@@ -50,9 +37,7 @@ function StripMQ (input, options) {
         orientation:     options.orientation || 'landscape',
         'aspect-ratio':  options['aspect-ratio'] || options.width/options.height || 1024/768,
         color:           options.color || 3,
-        ignoreBase:      (options.ignoreBase === true),
-        prefixCSS:       options.prefixCSS || '',
-        prefixWithSpace: (options.prefixWithSpace !== false)
+        removeBaseCss:   (options.removeBaseCss === true)
     };
 
     var tree = parse(input);

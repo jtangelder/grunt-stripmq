@@ -55,12 +55,14 @@ Some mobile-first CSS that manipulates the background based on the viewport's wi
 ```css
 body {
     background: url('mobile-background.png');
+    margin: 100px;
 }
 
 /* Change the background for tablets */
 @media screen and (min-width: 640px) {
     body {
         background: url('tablet-background.png');
+        margin: 120px;
     }
 }
 
@@ -85,17 +87,9 @@ Note how the media queries were removed. The `monochrome` media query did not ma
 
 ```css
 body {
-  background: url('mobile-background.png');
-}
-
-body {
-  background: url('tablet-background.png');
-}
-
-/* This will be shown to old-ie users. */
-body {
-  background: url('desktop-background.png');
-  font-size: 120%;
+    margin: 120px;
+    background: url(desktop-background.png);
+    font-size: 120%;
 }
 ```
 
@@ -116,6 +110,7 @@ Here's what the `stripmq` task does under the hood:
 * It compares the parsed media query to the JavaScript object that you pass into `options` (more on this below)
   * If the comparison passes, it unwraps all the rules from the media query and adds them to `destination.css` file in the same place
   * If the comparison fails, it ignores all the rules within the media query
+* Cleans the CSS with clean-css, by merging selectors and properties.
 * It outputs the `destionation.css` file.
 
 

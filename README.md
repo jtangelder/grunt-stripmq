@@ -166,7 +166,7 @@ Default value: Defaults to `options.width/options.height` if both are provided, 
 Type: `Integer`
 Default value: `3`
 
-#### options.removeBaseCss
+#### options.onlyMediaQueries
 Type: `Boolean`
 Default value: `false`
 

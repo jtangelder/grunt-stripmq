@@ -11,7 +11,7 @@ function stripMediaQueries (ast, options) {
                 rules.push.apply(rules, rule.rules);
             }
         } else {
-            if (options.removeBaseCss !== true) {
+            if (options.onlyMediaQueries !== true) {
                 rules.push(rule);
             }
         }
@@ -28,16 +28,16 @@ function stripMediaQueries (ast, options) {
 function StripMQ (input, options) {
 
     options = {
-        type:            options.type || 'screen',
-        width:           options.width || 1024,
-        'device-width':  options['device-width'] || options.width || 1024,
-        height:          options.height || 768,
-        'device-height': options['device-height'] || options.height || 768,
-        resolution:      options.resolution || '1dppx',
-        orientation:     options.orientation || 'landscape',
-        'aspect-ratio':  options['aspect-ratio'] || options.width/options.height || 1024/768,
-        color:           options.color || 3,
-        removeBaseCss:   (options.removeBaseCss === true)
+        type:             options.type || 'screen',
+        width:            options.width || 1024,
+        'device-width':   options['device-width'] || options.width || 1024,
+        height:           options.height || 768,
+        'device-height':  options['device-height'] || options.height || 768,
+        resolution:       options.resolution || '1dppx',
+        orientation:      options.orientation || 'landscape',
+        'aspect-ratio':   options['aspect-ratio'] || options.width/options.height || 1024/768,
+        color:            options.color || 3,
+        onlyMediaQueries: (options.onlyMediaQueries === true)
     };
 
     var tree = parse(input);

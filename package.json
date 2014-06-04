@@ -32,7 +32,8 @@
     "css-stringify": "^1.4.1",
     "css-parse": "^1.7.0",
     "css-mediaquery": "^0.1.2",
-    "clean-css": "^2.1.8"
+    "clean-css": "^2.1.8",
+    "stripmq": "^0.0.5"
   },
   "devDependencies": {
     "grunt-contrib-jshint": "^0.10.0"

@@ -2,7 +2,7 @@
 
 var fs = require("fs"),
     CleanCss = require('clean-css'),
-    stripmq = require('./lib/stripmq');
+    stripmq = require('stripmq');
 
 module.exports = function (grunt) {
     grunt.registerMultiTask("stripmq", "Strip media queries from stylesheets", function () {

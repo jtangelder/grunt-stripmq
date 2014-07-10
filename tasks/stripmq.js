@@ -2,11 +2,13 @@
 
 var fs = require("fs"),
     CleanCss = require('clean-css'),
-    stripmq = require('./lib/stripmq');
+    stripMq = require('./lib/stripmq');
 
 module.exports = function (grunt) {
     grunt.registerMultiTask("stripmq", "Strip media queries from stylesheets", function () {
-        var options = this.options({});
+        var options = this.options({
+            cleanCss: true
+        });
 
         // Iterate over all src-dest file pairs.
         this.files.forEach(function (f) {
@@ -22,8 +24,11 @@ module.exports = function (grunt) {
             // try and strip the mq
             try {
                 var input = fs.readFileSync(src[0], {encoding: 'utf-8'});
-                var result = stripmq(input, options);
-                result = new CleanCss().minify(result);
+                var result = stripMq(input, options);
+
+                if(options.cleanCss) {
+                    result = new CleanCss().minify(result);
+                }
 
                 grunt.file.write(f.dest, result);
                 grunt.log.writeln('File "' + f.dest + '" created.');

@@ -111,7 +111,7 @@ Here's what the `stripmq` task does under the hood:
   * If the comparison passes, it unwraps all the rules from the media query and adds them to `destination.css` file in the same place
   * If the comparison fails, it ignores all the rules within the media query
 * Cleans the CSS with clean-css, by merging selectors and properties.
-* It outputs the `destionation.css` file.
+* It outputs the `destination.css` file.
 
 
 

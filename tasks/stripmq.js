@@ -7,7 +7,7 @@ var fs = require("fs"),
 module.exports = function (grunt) {
     grunt.registerMultiTask("stripmq", "Strip media queries from stylesheets", function () {
         var options = this.options({
-            cleanCss: true
+            cleanCss: {}
         });
 
         // Iterate over all src-dest file pairs.
@@ -27,7 +27,7 @@ module.exports = function (grunt) {
                 var result = stripMq(input, options);
 
                 if(options.cleanCss) {
-                    result = new CleanCss().minify(result);
+                    result = new CleanCss(options.cleanCss).minify(result);
                 }
 
                 grunt.file.write(f.dest, result);

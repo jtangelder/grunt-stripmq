@@ -161,6 +161,10 @@ Default value: Defaults to `options.width/options.height` if both are provided, 
 Type: `Integer`
 Default value: `3`
 
+#### options.onlyMediaQueries
+Type: `Boolean`
+Default value: `false`
+
 ## Contributing
 
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using Grunt.

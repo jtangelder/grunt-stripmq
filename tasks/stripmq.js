@@ -34,7 +34,7 @@ module.exports = function (grunt) {
                 grunt.log.writeln('File "' + f.dest + '" created.');
             }
             catch (e) {
-                var err = new Error('Stripping media queries failed.');
+                var err = new Error('Stripping media queries failed: ' + e.toString());
                 if (e.msg) {
                     err.message += ', ' + e.msg + '.';
                 }
